@@ -6,14 +6,9 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use App\Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
-use App\Filament\Widgets\AvisosWidget;
-use App\Filament\Widgets\BaixoEstoqueWidget;
-use App\Filament\Widgets\MovimentacoesRecentesWidget;
-use App\Filament\Widgets\ResumoEstoqueWidget;
 use Filament\Widgets\AccountWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -22,30 +17,43 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-class AdminPanelProvider extends PanelProvider
+/**
+ * Painel Filament exclusivo para o perfil Coordenador (Professor).
+ *
+ * Acessível em: /professor
+ * Quem acessa: somente usuários com perfil 'coordenador'
+ *              (controlado por User::canAccessPanel())
+ *
+ * Recursos disponíveis:
+ *   - Livros: somente visualização (sem criar, editar ou excluir)
+ *   - Reservas: criar e acompanhar as próprias reservas
+ */
+class ProfessorPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->default()
-            ->id('admin')
-            ->path('admin')
-            ->brandName('SenaiStock')
+            ->id('professor')
+            ->path('professor')
+            ->brandName('SenaiStock — Professor')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Blue, // azul para distinguir do painel do almoxarife
             ])
-            ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
-            ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
-            ->pages([
-                Dashboard::class,
-            ])
-            ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
+            // Resources exclusivos do painel professor
+            ->discoverResources(
+                in: app_path('Filament/Professor/Resources'),
+                for: 'App\Filament\Professor\Resources'
+            )
+            ->discoverPages(
+                in: app_path('Filament/Professor/Pages'),
+                for: 'App\Filament\Professor\Pages'
+            )
+            ->discoverWidgets(
+                in: app_path('Filament/Professor/Widgets'),
+                for: 'App\Filament\Professor\Widgets'
+            )
             ->widgets([
                 AccountWidget::class,
-                ResumoEstoqueWidget::class,
-                AvisosWidget::class,
-                BaixoEstoqueWidget::class,
-                MovimentacoesRecentesWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
