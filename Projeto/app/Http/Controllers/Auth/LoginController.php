@@ -75,7 +75,9 @@ class LoginController extends Controller
      */
     private function painelDoUsuario(): string
     {
-        return Auth::user()?->isAlmoxarife() ? '/admin' : '/professor';
+        return Auth::user()?->isCoordenador()
+            ? route('livros.index')
+            : route('dashboard');
     }
 
     /**

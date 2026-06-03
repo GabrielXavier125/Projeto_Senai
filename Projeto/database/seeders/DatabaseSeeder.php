@@ -41,13 +41,34 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // Coordenador — acesso gerencial (monitora estoque, gerencia usuários)
+        // Professores — cada um responsável por uma matéria
         User::updateOrCreate(
             ['email' => 'coordenador@senai.br'],
             [
-                'name'     => 'Prof. Ana Coordenadora',
+                'name'     => 'Prof. Ana Silva',
                 'password' => Hash::make('senha123'),
                 'perfil'   => PerfilUsuario::Coordenador,
+                'materia'  => 'Programação',
+            ]
+        );
+
+        User::updateOrCreate(
+            ['email' => 'prof.redes@senai.br'],
+            [
+                'name'     => 'Prof. Carlos Redes',
+                'password' => Hash::make('senha123'),
+                'perfil'   => PerfilUsuario::Coordenador,
+                'materia'  => 'Redes',
+            ]
+        );
+
+        User::updateOrCreate(
+            ['email' => 'prof.eletro@senai.br'],
+            [
+                'name'     => 'Prof. Marcos Eletro',
+                'password' => Hash::make('senha123'),
+                'perfil'   => PerfilUsuario::Coordenador,
+                'materia'  => 'Eletrotécnica',
             ]
         );
 
