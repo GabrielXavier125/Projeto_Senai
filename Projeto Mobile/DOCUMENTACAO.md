@@ -179,7 +179,7 @@ Projeto Mobile/
 │   ├── core/
 │   │   ├── app_colors.dart           ← Paleta (mesmas cores do Tailwind do projeto web)
 │   │   ├── app_theme.dart            ← Tema Material 3 (AppBar, cards, campos, botões)
-│   │   ├── app_exceptions.dart       ← Exceções de domínio (estoque insuficiente, quantidade inválida, regra de negócio)
+│   │   ├── app_exceptions.dart       ← Exceções de domínio (estoque, quantidade, regra de negócio)
 │   │   └── password_hasher.dart      ← Hash SHA-256 das senhas
 │   ├── models/                       ← Entidades e enums
 │   │   ├── perfil_usuario.dart       ← Enum Almoxarife / Coordenador (Professor)
@@ -191,7 +191,7 @@ Projeto Mobile/
 │   │   ├── reserva.dart              ← + isPendente, temEstoqueSuficiente
 │   │   └── notificacao.dart
 │   ├── data/
-│   │   └── app_database.dart         ← Schema SQLite (equivale às migrations) + dados de demonstração (equivale aos seeders)
+│   │   └── app_database.dart         ← Schema SQLite (= migrations) + dados de demonstração (= seeders)
 │   ├── repositories/                 ← Regras de negócio e acesso ao banco
 │   │   ├── auth_repository.dart
 │   │   ├── livro_repository.dart
@@ -223,7 +223,8 @@ Projeto Mobile/
 ├── pubspec.yaml                      ← Dependências e metadados do app
 ├── analysis_options.yaml             ← Regras de lint
 ├── README.md                         ← Guia rápido
-└── DOCUMENTACAO.md                   ← Este arquivo
+├── DOCUMENTACAO.md                   ← Esta documentação (fonte em Markdown)
+└── DOCUMENTACAO.pdf                  ← Esta documentação em PDF
 ```
 
 ### Tamanho do código

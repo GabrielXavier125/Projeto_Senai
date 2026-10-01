@@ -2,7 +2,7 @@
 
 Versão **Flutter** do SenaiStock (controle de estoque de livros didáticos do SENAI Limeira), construída como aplicativo **independente**: não consome a API do projeto Laravel em `Projeto/`. Todo o domínio — usuários, livros, movimentações, reservas e notificações — e as mesmas regras de negócio (RN1–RN10) foram reimplementados em Dart, com banco local **SQLite** (`sqflite`).
 
-📘 Documentação técnica completa (stack, banco de dados, módulos, regras de negócio, como executar e log de desenvolvimento): [`DOCUMENTACAO.md`](DOCUMENTACAO.md).
+📘 Documentação técnica completa (stack, banco de dados, módulos, regras de negócio, como executar e log de desenvolvimento): [`DOCUMENTACAO.pdf`](DOCUMENTACAO.pdf) — fonte em Markdown: [`DOCUMENTACAO.md`](DOCUMENTACAO.md).
 
 > **Por que não usar a API Laravel?** A API do projeto original só cobre Livros, Estoque e Movimentações; Reservas, Notificações e Usuários existem apenas nas telas Livewire. Para o app ter as mesmas funcionalidades sem alterar o projeto original, ele tem sua própria camada de dados local.
 
